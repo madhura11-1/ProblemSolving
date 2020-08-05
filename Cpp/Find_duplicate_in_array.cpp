@@ -18,7 +18,7 @@ void findDuplicate(int *arr){
     int fast = arr[0];
     do{
         slow = arr[slow];
-        fast = arr[arr[fast]];
+        fast = arr[arr[fast]];                          // you move fast by 2 or 3 or 4 it will meet only the cycles will increase
     }while(arr[slow] != arr[fast]);
 
     fast = arr[0];
@@ -32,7 +32,7 @@ void findDuplicate(int *arr){
 }
 int main(){
 
-    int arr[10] = {2,5,9,6,9,3,8,9,7,1};
+    int arr[10] = {2,5,5,6,9,3,8,9,7,1};
     findDuplicate(arr);
     return 0;
 }
