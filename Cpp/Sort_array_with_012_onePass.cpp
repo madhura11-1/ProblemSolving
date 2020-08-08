@@ -45,12 +45,12 @@ void onePassSort(int *arr,int n){
         }
                 cout<<low<<" "<<high<<endl;
     }
-    */
-
-   while(mid <= high){
-        if(arr[mid] == 0){
-            swap(arr[mid],arr[low]);
-            mid++;
+    */                                          // Navie approach may be sorting things
+                                                 // Another approach is using counting sort method 
+   while(mid <= high){                           // i.e. counting number of 1 and 0 and 2 and putting them in smae array but
+        if(arr[mid] == 0){                      // is not a one pass solution
+            swap(arr[mid],arr[low]);           // ** This approach is called as Dutch National Flag Algorithm
+            mid++;                            
             low++;
         }
         else if(arr[mid] == 1)
