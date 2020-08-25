@@ -1,19 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Show(int *grid, int n){
+void Show(int grid[][9], int n){
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
-            cout<<grid[i*n+j]<<" ";
+            cout<<grid[i][j]<<" ";
         }
         cout<<endl;
     }
 }
 
-bool Full(int *grid,int n){
+bool Full(int grid[][9],int n){
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
-            if(grid[i*n+j] != 0){
+            if(grid[i][j] == 0){
                 return false;
             }
         }
@@ -21,19 +21,19 @@ bool Full(int *grid,int n){
     return true;
 }
 
-vector<int> possibilityArray(int *grid,int i,int j,int n){
+vector<int> possibilityArray(int grid[][9],int i,int j,int n){
 
     vector<int> arr(10,0);
 
     for(int h=0;h<n;h++){
-        if(grid[i*n+h] != 0){
-            arr[grid[i*n+h]] =1;
+        if(grid[i][h] != 0){
+            arr[grid[i][h]] =1;
         }
     }
 
     for(int k=0;k<n;k++){
-        if(grid[k*n+j] != 0){
-            arr[grid[k*n+j]] = 1;
+        if(grid[k][j] != 0){
+            arr[grid[k][j]] = 1;
         }
     }
 
@@ -59,8 +59,8 @@ vector<int> possibilityArray(int *grid,int i,int j,int n){
 
     for(int u = m;u<m+3;u++){
         for(int v = p; v< p+3; v++){
-            if(grid[u*3+v] != 0){
-                arr[grid[u*3+v]] =1;
+            if(grid[u][v] != 0){
+                arr[grid[u][v]] =1;
             }
         }
     }
@@ -78,22 +78,23 @@ vector<int> possibilityArray(int *grid,int i,int j,int n){
 
 }
 
-void sudokuSolver(int *grid, int n){
+void sudokuSolver(int grid[][9], int n){
 
     vector<int> arr(10,0);  
     int i=0;
     int j=0;
     int flag = 0;
 
-    if(Full((int *)grid,n)){
+    if(Full(grid,n)){
         cout<<"Successfully done"<<endl;
-        Show((int *)grid,n);
+        Show(grid,n);
+        return;
     }
     else{
 
         for(int x = 0; x < n ; x++){
             for(int y =0;y<n;y++){
-                if( grid[x*n+y] == 0){
+                if( grid[x][y] == 0){
                     i = x;
                     j = y;
                     flag = 1;
@@ -105,33 +106,39 @@ void sudokuSolver(int *grid, int n){
             }
         }
 
-        arr = possibilityArray((int *)grid,i,j,n);
+        arr = possibilityArray(grid,i,j,n);
 
         for(int k=1;k<10;k++){
             if(arr[k] != 0){
-                grid[i*n+j] = arr[k];
-                sudokuSolver((int *)grid,n);
+                grid[i][j] = arr[k];
+                sudokuSolver(grid,n);
             }
         }
 
-        grid[i*n+j] = 0;
+        grid[i][j] = 0;
 
     }
 
 }
 
 int main(){
-    cout<<"Enter the grid size (N)"<<endl;
-    int k,h,ele,n;
-    cin>>n;
-    int grid[n][n];
+    int k,h,ele;
+    int grid[9][9];
+    int n =9;
     bool ok = true;
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             grid[i][j] = 0;
         }
     }
-    do{
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            cin>>ele;
+            grid[i][j] = ele;
+        }
+    }
+
+    /*do{
         cout<<"Enter the ele position to insert and the element also"<<endl;
         cin>>k>>h>>ele;
         grid[k][h] = ele;
@@ -144,8 +151,8 @@ int main(){
 
         
     }
-    while(ok);
-    Show((int *)grid,n);
-    sudokuSolver((int *)grid,n);
+    while(ok);*/
+    Show(grid,n);
+    sudokuSolver(grid,n);
     return 0;
 }
