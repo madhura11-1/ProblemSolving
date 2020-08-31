@@ -1,6 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// In normal case you will need three loops where
+// 1 loop is for iteration thru over
+// 2 loop is for finding the sub array where j=i;
+// 3 for finding sum where it will run from i to j            O(n3)
+
+// Also can be done with quadratic sum instead of using third loop calculate su, there only
+
 int MaximumSubarraySum(vector<int> arr){
 
     int sum=0;
@@ -13,7 +20,7 @@ int MaximumSubarraySum(vector<int> arr){
             n = i;
         }
         maxS = max(maxS,sum);
-        if(sum < 0){                      // if sum becomes then it wont be of any use 
+        if(sum < 0){                      // if sum becomes negative then it wont be of any use 
             sum =0;
             m=i+1;
         }
