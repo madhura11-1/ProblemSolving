@@ -15,8 +15,8 @@ int minDis(int *dis,bool *check){
     return node;
 }
 
-void prims(int graph[][5]){
-
+void prims(int graph[][5]){                                    // Complexity : O(n2)
+ 
     int dis[5];
     bool check[5];
     int parent[5];
