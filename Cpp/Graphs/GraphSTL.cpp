@@ -16,7 +16,7 @@ class Graph{
 
    void addNode(int u,int v){
        arr[u].push_back(v);
-       arr[v].push_back(u);
+      // arr[v].push_back(u);
    }
 
    void show(){
@@ -77,6 +77,18 @@ class Graph{
 
    }
 
+   void DFS(int node){                   //wont work for an undirected graph
+
+       cout<<node<<" ";
+       list<int> :: iterator it;
+       it = arr[node].begin();
+       while(it != arr[node].end()){
+           return DFS(*it);
+           *it++;
+       }
+
+   }
+
 };
 
 
@@ -90,6 +102,7 @@ int main(){
     abc->addNode(3,4);
     abc->addNode(3,5);
     abc->show();
-    abc->BFS(0,5);
+    //abc->BFS(0,5);
+    abc->DFS(0);
     return 0;
 }
