@@ -19,15 +19,15 @@ void findDuplicate(int *arr){
     do{
         slow = arr[slow];
         fast = arr[arr[fast]];                          // you move fast by 2 or 3 or 4 it will meet only the cycles will increase
-    }while(arr[slow] != arr[fast]);
+    }while(slow != fast);
 
     fast = arr[0];
-    while(arr[fast] != arr[slow]){
+    while(fast != slow){
         slow = arr[slow];
         fast = arr[fast];
     }
 
-    cout<<arr[slow];
+    cout<<slow;
 
 }
 int main(){
