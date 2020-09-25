@@ -31,7 +31,6 @@ void findDuplicate(int *arr){
 
 }
 int main(){
-
     int arr[10] = {2,5,5,6,9,3,8,9,7,1};
     findDuplicate(arr);
     return 0;
