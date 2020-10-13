@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<vector<int>> fourSum(vector<int>& nums, int target) {
+//vector<vector<int>> fourSum(vector<int>& nums, int target) {
         
 /*    
 This method does not consider all the possible quads it does give out some of them but not all
@@ -59,7 +59,59 @@ This method does not consider all the possible quads it does give out some of th
 
  */
 
-
+vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        
+        
+        int left,right;
+        vector<vector<int>> ans;
+        sort(nums.begin(),nums.end());
+        
+        if(nums.empty()){
+            return ans;
+        }
+        
+        for(int i=0;i<nums.size();i++){
+            
+            
+            for(int j = i+1;j<nums.size();j++){
+                
+                left = j+1;
+                right = nums.size()-1;
+                while(left < right){
+                int k = target - (nums[i] + nums[j]);
+                if(k == (nums[left] + nums[right])){
+                    vector<int> a;
+                    a.push_back(nums[i]);
+                    a.push_back(nums[j]);
+                    a.push_back(nums[left]);
+                    a.push_back(nums[right]);
+                    
+                    ans.push_back(a);
+                     
+                    
+                    while(left < right && nums[left] == a[2]) left++;
+                    
+                    while(left < right && nums[right] == a[3]) right--;
+                }
+                else if(k > (nums[left] + nums[right])){
+                    left++;
+                }
+                else{
+                    right--;
+                }
+                
+                }
+                
+                while(j+1 < nums.size() && nums[j +1] == nums[j]) j++;
+                
+            }
+            
+            while(i+1 < nums.size() && nums[i+1] == nums[i]) i++;
+            
+        }
+        
+        return ans;
+        
     }
 
 
