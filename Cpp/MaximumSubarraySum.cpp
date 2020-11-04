@@ -6,7 +6,7 @@ using namespace std;
 // 2 loop is for finding the sub array where j=i;
 // 3 for finding sum where it will run from i to j            O(n3)
 
-// Also can be done with quadratic sum instead of using third loop calculate su, there only
+// Also can be done with quadratic sum instead of using third loop calculate sum, there only
 
 int MaximumSubarraySum(vector<int> arr){
 

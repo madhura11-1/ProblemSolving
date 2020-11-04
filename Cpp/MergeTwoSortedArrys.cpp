@@ -9,7 +9,7 @@
                       Space : O(1)
 
     Third Appraoch : GAP algorithm
-                    find gap which is n/2 
+                    find gap which is n/2 (ceiling value eg : for 7 take 4) 
                     first pointer at 0th ele and second pointer at gap th element
                     compare the two and if gapth ele is smaller than first swap
                     continue until gap = 1

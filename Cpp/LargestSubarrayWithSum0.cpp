@@ -11,7 +11,7 @@ using namespace std;
 
 void LargestSubarray(vector<int> &arr){
 
-    int sum = arr[0];
+  /*  int sum = arr[0];
     int start =0;
     int maxlen = INT_MIN;
     for(int i=1;i<arr.size();i++){
@@ -23,7 +23,7 @@ void LargestSubarray(vector<int> &arr){
             }
             i++;
             sum += arr[i];
-        }
+        }                                                   Cannot use this as fails for 1,2,3,-6,7,1
         if(sum >0){
             sum -= arr[start];
             start++;
@@ -32,6 +32,32 @@ void LargestSubarray(vector<int> &arr){
     }
 
     cout<<maxlen;
+    */
+
+   int sum = 0;
+   int maxlen = 0;
+    map<int,int> abc;
+
+   for(int i=0;i<arr.size();i++){
+
+       sum += arr[i];
+
+        if(sum == 0){
+            maxlen = i + 1;
+        }
+        else{
+       if(abc.find(sum) != abc.end()){
+           map<int,int> :: iterator it;
+           it = abc.find(sum);
+           maxlen = max(maxlen,i - it->second);
+       }
+       else{
+           abc.insert(sum,i);
+       }
+
+        }
+   }
+
 }
 
 int main(){
