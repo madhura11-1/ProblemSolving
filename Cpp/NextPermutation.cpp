@@ -20,6 +20,7 @@ int pivot;
     for(int i = n-1;i >= point+1;i--){
         if(arr[i] > arr[point]){
             pivot = i;
+            break;
         }
     }
 
