@@ -26,7 +26,7 @@ using namespace std;
 
 int j = 0;
 
-void Decrypt(string ans,int key){
+void Decrypt(string ans,int key){                  // time : O(n)
 
     int k = -1;
     int i = 0;
