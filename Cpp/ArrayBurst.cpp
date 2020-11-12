@@ -22,7 +22,7 @@ void ReduceString(string arr,int burst){
 
     while(i < arr.length()){
 
-        if(i == arr.length()-1 && j >= arr.length()){
+        if(i == arr.length()-1 && j >= arr.length()){                // even this condition can be removed or is unnecesssary
             cout<<arr[i]<<" ";
             break;
         }
